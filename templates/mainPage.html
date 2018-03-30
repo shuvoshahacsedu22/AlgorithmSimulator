@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Developed by Shuvo Shaha">
+<meta name="keywords" content="Online learning tool">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="neKmNmqM4DFF9ZPVAQMyLzLpV6S27ZqnpKuqxgNA">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<meta property="og:image" content="https://visualgo.net/img/png.png">
+<title>Algorithm Simulator</title>
+<link rel="icon" href="https://visualgo.net/img/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="https://visualgo.net/img/favicon.png" type="image/x-icon">
+<link rel="apple-touch-icon" href="https://visualgo.net/img/favicon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://visualgo.net/img/favicon.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://visualgo.net/img/favicon.png">
+<link rel="stylesheet" type="text/css" href="https://visualgo.net/fonts/silkscreen/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="https://visualgo.net/css/common.css">
+<style>
+
+h1 {
+  text-align: center;
+  font-family: 'SilkscreenNormal';
+  font-size: 30px;
+  margin-top: 50px;
+}
+
+h2 {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+#searchbar { text-align: center; }
+#search {
+  width: 600px;
+  padding: 7px 10px;
+  box-shadow: 0px 0px 3px #929292 inset;
+  background: white;
+  color: #888888;
+  font-size: 14px;
+}
+
+#show-filters {
+  cursor: pointer;
+  color: white;
+  padding: 7px 11px 6px;
+  margin-left: -1px;
+  display: inline-block;
+}
+#show-filters img { display: inline-block; vertical-align: 2px; }
+
+#active-tags { text-align: center; margin-left: -10px; }
+.active-tag {
+  display: inline-block;
+  position: relative;
+  background: #aaaaaa;
+  color: white;
+  padding: 4px 34px 4px 8px;
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 14px;
+}
+.active-tag span { /*the cross*/
+  background: #444444;
+  display: inline-block;
+  padding: 3px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}
+.rotateRight {
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Safari and Chrome */
+  -o-transform: rotate(180deg); /* Opera */
+  -moz-transform: rotate(180deg); /* Firefox */
+
+  /* if you want to do this move with animate use transition */
+  transition: .5s;
+  -moz-transition: .5s; /* Firefox 4 */
+  -webkit-transition: .5s; /* Safari and Chrome */
+  -o-transition: .5s; /* Opera */
+}
+
+.line { height: 1px; background: #cccccc; margin: 0px 30px;}
+#emptySearchMsg { text-align: center; font-size: 15px; margin-top: 20px; }
+#filters { padding: 20px 60px 12px 22px; overflow: auto; }
+  .filter {
+    color: white;
+    padding: 3px 8px;
+    margin: 0px 0px 8px 8px;
+    cursor: pointer;
+    border-radius: 2px;
+    float: left;
+  }
+
+.list { width: 100%; clear: both;}
+.list li {
+  display: block;
+  float: left;
+  width: 100%;
+}
+.list li .li-wrapper {
+  background: white;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 3px #dddddd;
+}
+.list li .li-wrapper:hover {
+  box-shadow: 0px 0px 3px #aaaaaa;
+}
+.list li a.thumbnail {
+  display: block;
+  position: relative;
+  margin: 0px 0px 10px 10px;
+  cursor: pointer;
+}
+.list li a.thumbnail .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+}
+.list li a.thumbnail img { width: 100%; }
+.list li a.thumbnail img.static { width: 100%; position: absolute; top: 0px; }
+.list li a.thumbnail div { width: 100%; }
+.list li a.thumbnail div.static { width: 100%; position: absolute; top: 0px; }
+
+.list li .info { margin: 0px 0px 0px 10px; }
+.list li .info h3 {
+  font-size: 13px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 8px;
+}
+.list li .info h3:hover { color: #999999; }
+.list li .info .indv-viz-filters { margin-left: -8px; height: 23px; float: none; overflow: hidden; }
+
+#noexist {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+#topleft {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 2px;
+  max-height: 200px;
+}
+
+#topright {
+  position: absolute;
+  top: 60px;
+  left: 1000px;
+  width: 90px;
+  height: 175px;
+  display: none;
+}
+
+@media (min-width: 320px) { /* 320-480px */
+  #topleft {
+    top: 20px;
+    width: 100%-; /* the - is to take into account the potential vertical scroll bar? */
+    position: relative;
+  }
+}
+
+@media (min-width: 480px) { /* 480-768px */
+  h1 { font-size: 50px; }
+  .line { margin: 0px 50px; }
+  #filters { padding: 20px 60px 12px 42px; }
+  .list li { width: 50%; }
+}
+
+@media (min-width: 768px) { /* 768-1024px */
+  .line { margin: 0px 60px; }
+  #filters { padding: 20px 60px 12px 52px; }
+  .list li { width: 33.33%; }
+}
+
+@media (min-width: 1024px) { /* more than 1024px */
+  .list li { width: 25%; }
+  #topleft {
+    top: 40px;
+    width: 25%;
+    position: absolute;
+  }
+}
+
+@media (min-width: 1400px) { /* more than 1400px */
+  .list li { width: 20%; }
+}
+
+.static {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 100%;
+  width: 300px;
+  opacity: 1;
+  backface-visibility: hidden;
+}
+
+/*.container {
+  position: relative;
+  width: 50%;
+}
+*/
+/*.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+*/
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.li-wrapper:hover .static {
+  opacity: 0.3;
+}
+
+.li-wrapper:hover .middle {
+  opacity: 1;
+}
+
+.message {
+  font-size: 150%;
+  text-align: center;
+}
+
+
+
+#notloggedin {
+  background-color: black;
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+  position: absolute;
+  width: 280px;
+  top: 50px;
+  right: 10px;
+  padding: 7px;
+  z-index: 1;
+}
+
+#notloggedin::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: 110px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+</style>
+<link rel='alternate' hreflang='en' href='https://visualgo.net'>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1566631-4', 'auto');
+ga('send', 'pageview');
+
+function changeURL() {
+  var URL = window.location.href.split('/');
+  var val = document.getElementById("Language").value;
+  URL[3] = val;
+  window.location.assign(URL.join('/'));
+}
+</script>
+</head>
+<body>
+<div id="top-bar">
+<a href="http://www.comp.nus.edu.sg/~stevenha"><span class="colour" style="border: 1px solid green; border-radius: 25px;">7</span></a>&nbsp;&nbsp;&nbsp;
+<a id="home" href="/">Visu<span class="colour">Algo</span><span style="font-size: 40%">.net</span></a>
+/
+
+<span class="right-links" id="useraccount">Login</span>
+<a class="right-links" id="translation-link" href="translation">Translation</a>
+<a class="right-links" id="training-link" href="training">Training</a>
+</div>
+<div id="dark-overlay"></div>
+<div id="notloggedin">
+<p>Log in to get more feature<b>specilly</b>.
+VisuAlgo user account is free and you can register now.
+</p>
+</div>
+<h1>Visu<span class="colour">Algo</span><span style="font-size:25%">.net/en</span></h1>
+<h2 id="subtitle">visualising data structures and algorithms through animation</h2>
+<form id="searchbar">
+<input id="search" type="text" autocomplete="off" placeholder="Search..."><div id="show-filters" title="show/hide filters">&#9663;</div>
+</form>
+<div id="active-tags"></div>
+<div id="emptySearchMsg" style="display: none;">No result were found.></div>
+<div id="filters-and-lines" style="display: none;">
+<div class="line" style="margin-top: 20px;"></div>
+<div id="filters"></div>
+<div class="line"></div>
+</div>
+
+<div id="main">
+<ul class="list">
+<li class='viz' id='sorting'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/sorting' data-anim='sorting'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/sorting.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+ <div class='info'>
+<h3><a id='sortingtext' href='en/sorting'>Sorting</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=sorting'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>array</span>
+<span class='filter'>algorithm</span>
+<span class='filter'>bubble</span>
+<span class='filter'>select</span>
+<span class='filter'>insert</span>
+<span class='filter'>selection</span>
+<span class='filter'>insertion</span>
+<span class='filter'>merge</span>
+<span class='filter'>quick</span>
+<span class='filter'>randomized quick</span>
+<span class='filter'>counting</span>
+<span class='filter'>radix</span>
+<span class='filter'>sort</span>
+<span class='filter'>list</span>
+<span class='filter'>data structure</span>
+<span class='filter'>sorting</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='bitmask'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/bitmask' data-anim='bitmask'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/bitmask.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='bitmasktext' href='en/bitmask'>Bitmask</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=bitmask'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>bit manipulation</span>
+<span class='filter'>set</span>
+<span class='filter'>array</span>
+<span class='filter'>list</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+<span class='filter'>bitmask</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='list'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/list' data-anim='list'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/list.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='listtext' href='en/list'>Linked List</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=list'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>stack</span>
+<span class='filter'>queue</span>
+<span class='filter'>doubly</span>
+<span class='filter'>deque</span>
+<span class='filter'>cs1020</span>
+<span class='filter'>cs2020</span>
+<span class='filter'>cs2040</span>
+<span class='filter'>array</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+<span class='filter'>linked</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='hashtable'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/hashtable' data-anim='hashtable'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/hashtable.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='hashtabletext' href='en/hashtable'>Hash Table</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=hashtable'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>open addressing</span>
+<span class='filter'>linear</span>
+<span class='filter'>quadratic</span>
+<span class='filter'>probing</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='heap'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/heap' data-anim='heap'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/heap.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='heaptext' href='en/heap'>Binary Heap</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=heap'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>priority queue</span>
+<span class='filter'>recursive</span>
+<span class='filter'>recursion</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+<span class='filter'>binary</span>
+<span class='filter'>heap</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='bst'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/bst' data-anim='bst'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/bst.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='bsttext' href='en/bst'>Binary Search Tree</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=bst'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>adelson velskii landis</span>
+<span class='filter'>set</span>
+<span class='filter'>table</span>
+<span class='filter'>avl</span>
+<span class='filter'>recursion</span>
+<span class='filter'>recursive</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+<span class='filter'>set</span>
+<span class='filter'>bst</span>
+<span class='filter'>binary</span>
+<span class='filter'>search</span>
+<span class='filter'>tree</span>
+<span class='filter'>priority</span>
+<span class='filter'>queue</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='graphds'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/graphds' data-anim='graphds'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/graphds.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='graphdstext' href='en/graphds'>Graph Structures</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=graphds'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>tree</span>
+<span class='filter'>complete</span>
+<span class='filter'>bipartite</span>
+<span class='filter'>dag</span>
+<span class='filter'>graph</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='ufds'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/ufds' data-anim='ufds'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/ufds.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='ufdstext' href='en/ufds'>Union-Find DS</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=ufds'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>path compression</span>
+<span class='filter'>disjoint</span>
+<span class='filter'>set</span>
+<span class='filter'>data structure</span>
+<span class='filter'>union by rank</span>
+<span class='filter'>array</span>
+<span class='filter'>tree</span>
+<span class='filter'>find</span>
+<span class='filter'>ds</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='segmenttree'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/segmenttree' data-anim='segmenttree'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/segmenttree.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='segmenttreetext' href='en/segmenttree'>Segment Tree</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>dynamic</span>
+<span class='filter'>range</span>
+<span class='filter'>sum</span>
+<span class='filter'>min</span>
+<span class='filter'>max</span>
+<span class='filter'>segment</span>
+<span class='filter'>tree</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='fenwicktree'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/fenwicktree' data-anim='fenwicktree'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/fenwicktree.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='fenwicktreetext' href='en/fenwicktree'>Fenwick Tree</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>binary indexed tree</span>
+ <span class='filter'>bit</span>
+<span class='filter'>dynamic</span>
+<span class='filter'>fenwick</span>
+<span class='filter'>range</span>
+<span class='filter'>sum</span>
+<span class='filter'>point</span>
+<span class='filter'>update</span>
+<span class='filter'>binary</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='recursion'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/recursion' data-anim='recursion'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/recursion.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='recursiontext' href='en/recursion'>Recursion Tree/DAG</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=recursion'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>dynamic programming</span>
+<span class='filter'>dp</span>
+<span class='filter'>generic</span>
+<span class='filter'>recursive</span>
+<span class='filter'>algorithm</span>
+<span class='filter'>recursion</span>
+<span class='filter'>tree</span>
+<span class='filter'>dag</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='dfsbfs'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/dfsbfs' data-anim='dfsbfs'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/dfsbfs.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='dfsbfstext' href='en/dfsbfs'>Graph Traversal</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=dfsbfs'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>bfs</span>
+<span class='filter'>dfs</span>
+<span class='filter'>bipartite</span>
+<span class='filter'>scc</span>
+<span class='filter'>cut vertex</span>
+<span class='filter'>articulation point</span>
+<span class='filter'>bridge</span>
+<span class='filter'>graph</span>
+<span class='filter'>algorithm</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='mst'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/mst' data-anim='mst'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/mst.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='msttext' href='en/mst'>Min Spanning Tree</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=mst'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>mst</span>
+<span class='filter'>prim</span>
+<span class='filter'>kruskal</span>
+<span class='filter'>graph</span>
+<span class='filter'>min</span>
+<span class='filter'>spanning</span>
+<span class='filter'>tree</span>
+<span class='filter'>algorithm</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='sssp'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/sssp' data-anim='sssp'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/sssp.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='sssptext' href='en/sssp'>SS Shortest Paths</a><a class='links' href='training?diff=Medium&n=7&tl=0&module=sssp'>Training</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>sssp</span>
+<span class='filter'>single-source</span>
+<span class='filter'>bfs</span>
+<span class='filter'>dijkstra</span>
+<span class='filter'>bellman ford</span>
+<span class='filter'>single source</span>
+<span class='filter'>shortest path</span>
+<span class='filter'>graph</span>
+<span class='filter'>algorithm</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='maxflow'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/maxflow' data-anim='maxflow'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/maxflow.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='maxflowtext' href='en/maxflow'>Network Flow</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>max flow</span>
+<span class='filter'>edmonds karp</span>
+<span class='filter'>min cut</span>
+<span class='filter'>dinic</span>
+<span class='filter'>ford fulkerson</span>
+<span class='filter'>graph</span>
+<span class='filter'>algorithm</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='matching'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/matching' data-anim='matching'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/matching.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='matchingtext' href='en/matching'>Graph Matching</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>augmenting path</span>
+<span class='filter'>bipartite</span>
+<span class='filter'>graph</span>
+<span class='filter'>matching</span>
+<span class='filter'>algorithm</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='cyclefinding'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/cyclefinding' data-anim='cyclefinding'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/cyclefinding.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='cyclefindingtext' href='en/cyclefinding'>Cycle Finding</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>floyd</span>
+<span class='filter'>tortoise-hare</span>
+<span class='filter'>math</span>
+<span class='filter'>algorithm</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='suffixtree'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/suffixtree' data-anim='suffixtree'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/suffixtree.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='suffixtreetext' href='en/suffixtree'>Suffix Tree</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>string</span>
+<span class='filter'>matching</span>
+<span class='filter'>lrs</span>
+<span class='filter'>lcs</span>
+<span class='filter'>suffix</span>
+<span class='filter'>tree</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='suffixarray'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/suffixarray' data-anim='suffixarray'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/suffixarray.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='suffixarraytext' href='en/suffixarray'>Suffix Array</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>lcp</span>
+<span class='filter'>matching</span>
+<span class='filter'>lrs</span>
+<span class='filter'>lcs</span>
+<span class='filter'>suffix</span>
+<span class='filter'>array</span>
+<span class='filter'>string</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='polygon'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/polygon' data-anim='polygon'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/polygon.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='polygontext' href='en/polygon'>Geometry (Polygon)</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>convex</span>
+<span class='filter'>cut</span>
+<span class='filter'>winding</span>
+<span class='filter'>concave</span>
+<span class='filter'>computational</span>
+<span class='filter'>geometry</span>
+<span class='filter'>algorithm</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='convexhull'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/convexhull' data-anim='convexhull'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/convexhull.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='convexhulltext' href='en/convexhull'>Convex Hull</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>andrew</span>
+<span class='filter'>monotone chain</span>
+<span class='filter'>graham</span>
+<span class='filter'>scan</span>
+<span class='filter'>jarvis</span>
+<span class='filter'>march</span>
+<span class='filter'>computational</span>
+<span class='filter'>geometry</span>
+<span class='filter'>algorithm</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='mvc'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/mvc' data-anim='mvc'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/mvc.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='mvctext' href='en/mvc'>Min Vertex Cover</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>np-hard</span>
+<span class='filter'>graph</span>
+<span class='filter'>bipartite</span>
+<span class='filter'>tree</span>
+<span class='filter'>tree</span>
+<span class='filter'>dp</span>
+<span class='filter'>bipartite</span>
+<span class='filter'>matching</span>
+<span class='filter'>max flow</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='tsp'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/tsp' data-anim='tsp'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/tsp.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='tsptext' href='en/tsp'>Traveling Salesman</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>np-hard</span>
+<span class='filter'>graph</span>
+<span class='filter'>dp</span>
+<span class='filter'>mst</span>
+</div>
+</div>
+</div>
+</li>
+<li class='viz' id='steinertree'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='en/steinertree' data-anim='steinertree'>
+<img src='img/dummy.gif' alt="please wait">
+<div class='static' style="background-image: url('img/png/steinertree.png');"></div>
+<div class="middle">
+<div class="message">Try This New Module</div>
+</div>
+</a>
+<div class='info'>
+<h3><a id='steinertreetext' href='en/steinertree'>Steiner Tree</a></h3>
+<div class='indv-viz-filters'>
+<span class='filter'>np-hard</span>
+<span class='filter'>graph</span>
+<span class='filter'>mst</span>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="bottom-bar">
+<a id="trigger-about">About</a>
+<a id="trigger-team">Team</a>
+<a id="trigger-terms">Terms of use</a>
+</div>
+<div id="about" class="overlays">
+<h4>About</h4><span class='close-overlay'>&#x2715;</span>
+<div class='content'>
+<a href="https://weibo.com/p/230418436e9ee80102v4rk" target='_blank'><u>zh</u></a>, <a href='https://www.facebook.com/notes/steven-halim/httpidvisualgonet-visualisasi-struktur-data-dan-algoritma-dengan-animasi/10153236934439689' target='_blank'><u>id</u></a>, <a href='http://blog.naver.com/visualgo_nus' target='_blank'><u>kr</u></a>, <a href='https://www.facebook.com/groups/163215593699283/permalink/824003417620494/' target='_blank'><u>vn</u></a>, <a href='http://pantip.com/topic/32736343' target='_blank'><u>th</u></a>.</p>
+</div>
+</div>
+<div id="team" class="overlays">
+<h4>Team</h4><span class='close-overlay'>&#x2715;</span>
+<div class='content'>
+
+<p>
+<strong><span style='line-height: 150%;'>Final Year Project/UROP students 3 (Jun 2014-Apr 2015)</span></strong><br>
+Erin Teo Yi Ling, Wang Zi
+</p>
+
+</div>
+</div>
+<div id="termsofuse" class="overlays">
+<h4>Terms of use</h4><span class='close-overlay'>&#x2715;</span>
+<div class='content'>
+<p>VisuAlgo is free of charge for Computer Science community on earth. If you like VisuAlgo, the only payment that we ask of you is for you to <b>tell the existence of VisuAlgo to other Computer Science students/instructors</b> that you know =) via Facebook, Twitter, course webpage, blog review, email, etc.</p> <p>If you are a data structure and algorithm <b>student/instructor</b>, you are allowed to use this website directly for your classes. If you take screen shots (videos) from this website, you can use the screen shots (videos) elsewhere as long as you cite the URL of this website (http://visualgo.net) and/or list of publications below as reference. However, you are <b>NOT</b> allowed to download VisuAlgo (client-side) files and <b>host it</b> on your own website as it is <b>plagiarism</b>. As of now, we do <b>NOT</b> allow other people to fork this project and create variants of VisuAlgo. Using the offline copy of (client-side) VisuAlgo for your personal usage is fine.</p> <p>Note that VisuAlgo&#39;s online quiz component is by nature has heavy server-side component and there is no easy way to save the server-side scripts and databases locally. Currently, the general public can only use the &#39;training mode&#39; to access these online quiz system. Currently the &#39;test mode&#39; is a more controlled environment for using these randomly generated questions and automatic verification for a <b>real</b> examination in NUS. Other interested CS instructor should contact Steven if you want to try such &#39;test mode&#39;.</p> <p><strong><span style="line-height: 200%;">List of Publications</span></strong></p> <p>This work has been presented briefly at the CLI Workshop at the ACM ICPC World Finals 2012 (Poland, Warsaw) and at the IOI Conference at IOI 2012 (Sirmione-Montichiari, Italy). You can click <a href="http://www.ioinformatics.org/oi/shtm/INFOL099.shtml" target="_blank">this link</a> to read our 2012 paper about this system (it was not yet called VisuAlgo back in 2012).</p><p>This work is done mostly by my past students. The most recent final reports are here: <a href="fyp/erin-report.pdf" target="_blank">Erin</a>, <a href="fyp/wangzi-report.pdf" target="_blank">Wang Zi</a>, <a href="fyp/rose-report.pdf" target="_blank">Rose</a>, <a href="fyp/ivan-report.pdf" target="_blank">Ivan</a>.</p> <p><strong><span style="line-height: 200%;">Bug Reports or Request for New Features</span></strong></p> <p>VisuAlgo is not a finished project. Dr Steven Halim is still actively improving VisuAlgo. If you are using VisuAlgo and spot a bug in any of our visualization page/online quiz tool or if you want to request for new features, please contact Dr Steven Halim. His contact is the concatenation of his name and add gmail dot com.</p>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+var PHP_DOMAIN = "";
+
+// surprise colour!
+// Referenced to in  home.js and viz.js also
+var colourArray = ["#52bc69", "#d65775"/*"#ed5a7d"*/, "#2ebbd1", "#d9513c", "#fec515", "#4b65ba", "#ff8a27", "#a7d41e"]; // green, pink, blue, red, yellow, indigo, orange, lime
+
+function disableScroll() { $('html').css('overflow', 'hidden'); }
+
+function enableScroll() { $('html').css('overflow', 'visible'); }
+
+function replaceAll(find, replace, str) { return str.replace(new RegExp(find, 'g'), replace); }
+
+function getColours() {
+  var generatedColours = new Array();
+  while (generatedColours.length < 4) {
+    var n = (Math.floor(Math.random() * colourArray.length));
+    if ($.inArray(n, generatedColours) == -1)
+      generatedColours.push(n);
+  }
+  return generatedColours;
+}
+
+function isOn(value, position) {
+  return (value>>position) & 1 === 1;
+}
+
+function customAlert(msg) {
+  $('#custom-alert p').html(msg);
+  var m = -1 * ($('#custom-alert').outerHeight()/2);
+  $('#custom-alert').css('margin-top', m+'px');
+  $('#dark-overlay').fadeIn(function() {
+    $('#custom-alert').fadeIn(function() {
+      setTimeout(function() {
+        $('#custom-alert').fadeOut(function() {
+          $('#dark-overlay').fadeOut();
+        });
+      }, 1000);
+    });
+  });
+}
+
+function showLoadingScreen() {
+  $('#loading-overlay').show();
+  $('#loading-message').show();
+}
+
+function hideLoadingScreen() {
+  $('#loading-overlay').hide();
+}
+
+function commonAction(retval, msg) {
+  //setTimeout(function() {
+    if (retval) { // mode == "exploration" && // now not only for exploration mode, but check if this opens other problems
+      $('#current-action').show();
+      $('#current-action').html(mode == "exploration" ? msg : ("e-Lecture Example (auto play until done)<br>" + msg));
+      $('#progress-bar').slider("option", "max", gw.getTotalIteration()-1);
+      triggerRightPanels();
+      isPlaying = true;
+    }
+  //}, 500);
+}
+
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split('&');
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split('=');
+    if (decodeURIComponent(pair[0]) == variable)
+      return decodeURIComponent(pair[1]);
+  }
+  return "";
+}
+
+var generatedColours = getColours();
+var surpriseColour = colourArray[generatedColours[0]];
+var colourTheSecond = colourArray[generatedColours[1]];
+var colourTheThird = colourArray[generatedColours[2]];
+var colourTheFourth = colourArray[generatedColours[3]];
+
+$(function() {
+  $('.links').css('background', surpriseColour);
+  $('.right-links').css('background', surpriseColour);
+  $('#login-go').css('background', surpriseColour);
+
+  $('.colour').css("color", surpriseColour); // name
+  $('h4').css("background-color", surpriseColour); // about, contact us etc. button background
+
+  // title
+  $('#title a').click(function() {
+    $('#title a').removeClass('selected-viz');
+    $(this).addClass('selected-viz');
+    // temporary quick fix for Google Chrome Aug 2016 issue...
+    setTimeout(function(){ document.body.style.zoom = "100.1%"; }, 100); // force resize/redraw...
+    setTimeout(function(){ document.body.style.zoom = "100%"; }, 600);
+  });
+
+  // overlays stuffs
+  $('#trigger-about').click(function() {
+    if ($(window).width() > 600) {
+      $('#dark-overlay').fadeIn(function() {
+        $('#about').fadeIn();
+      });
+    }
+    else
+      alert('Sorry, this dialog is too big. Please load it on bigger screen');
+  });
+
+  $('#trigger-team').click(function() {
+    if ($(window).width() > 600) {
+      $('#dark-overlay').fadeIn(function() {
+        $('#team').fadeIn();
+      });
+    }
+    else
+      alert('Sorry, this dialog is too big. Please load it on bigger screen');
+  });
+
+  $('#trigger-terms').click(function() {
+    if ($(window).width() > 600) {
+      $('#dark-overlay').fadeIn(function() {
+        $('#termsofuse').fadeIn();
+      });
+    }
+    else
+      alert('Sorry, this dialog is too big. Please load it on bigger screen');
+  });
+
+  $('.close-overlay').click(function() {
+    $('.overlays').fadeOut(function() {
+      $('#dark-overlay').fadeOut();
+    });
+  });
+
+  $('#dark-overlay').click(function() {
+    $('.overlays').fadeOut();
+    $('#dark-overlay').fadeOut();
+  });
+
+  $.get('/isloggedin', function(data) {
+    var isLoggedIn = data['isloggedin'] == '1';
+    var element;
+    if (isLoggedIn) {
+      // element = '<a onclick="verifyLogout()">Logout</a>';
+      element = '<a href="https://visualgo.net/profile">Profile</a>'; 
+    }
+    else {
+      element = '<a href="https://visualgo.net/login">Login</a>'
+    }
+    $('#useraccount').html(element);
+  });
+});
+
+function verifyLogout() {
+  // Steven's remarks: use a better 'confirm' than the default :(
+  var doesLogout = confirm('Are you sure to logout?');
+  if (doesLogout == true) {
+    window.location = "https://visualgo.net/logout";
+  }
+}
+
+function checkLogin() {
+  $.get('/checklogin', function(data) {
+    var url = data['url'];
+    window.location.href = '/' + url;
+  });
+}
+</script>
+<script>
+var seen = 0; // all have not been seen
+var timer;
+
+function nextTip() { // note to self: now I think I can increase the number of tips...
+  if (seen == (1<<10)-1) seen = 0;
+
+  var cur;
+  do {
+    cur = Math.floor(Math.random()*10);
+  }
+  while ((seen & (1<<cur)) != 0);
+
+  seen |= (1<<cur);
+  $("#msg").html($("#msg_list"+cur).html()).fadeIn();
+  clearTimeout(timer); // reset timer
+  timer = setTimeout(function() {
+    $("#msg").fadeOut(200, nextTip); // auto-rotate tip per 15s (current average 2h:25m, 10 tips so far)
+  }, 15000);
+}
+
+$(function() {
+  nextTip();
+
+  function showhide() {
+    if ($(window).width() < 700) {
+      $("#subtitle").html("this tool looks better on larger screen :)");
+      $("#topright").hide();
+      
+    }
+    else {
+      $("#subtitle").html("visualising data structures and algorithms through animation");
+      $("#topright").css("left", $(window).width()-100); // always on the right
+      $("#topright").show();
+      
+    }
+
+    if ($(window).width() < 500) {
+      $("#training-link").hide(); // too hard to train on small screen
+      $("#translation-link").hide(); // impossible to translate on such small screen
+    }
+    else {
+      $("#training-link").show();
+      $("#translation-link").show();
+    }
+
+    
+  }
+
+  $("#notloggedin").delay(15000).fadeOut();
+
+  $(window).resize(function() {
+    showhide();
+  });
+  showhide();
+
+  // thumbnail image animation on hover
+  $('a.thumbnail').hover(function() {
+    $(this).children('img').attr('src', 'img/gif/' + $(this).attr('data-anim') + '.gif');
+    $(this).children('img').attr('width', $(this).children('div.static').css('width')); 
+    $(this).children('img').attr('height', $(this).children('div.static').css('height'));
+    $(this).children('div.static').hide();
+  }, function() {
+    $(this).children('div.static').show();
+  });
+
+  // tags
+  var allViz = new Array(
+    new Array(
+    'sorting',
+    'sorting',
+    'array',
+    'algorithm',
+    'bubble',
+    'select',
+    'insert',
+    'selection',
+    'insertion',
+    'merge',
+    'quick',
+    'randomized quick',
+    'counting',
+    'radix',
+    'sort',
+    'cs1010',
+    'cs1020',
+    'cs2020',
+    'cs2040',
+    'cs3230',
+    'list',
+    'data structure',
+    'sorting'
+    ),
+    new Array(
+    'bitmask',
+    'bitmask',
+    'bit manipulation',
+    'set',
+    'cs3233',
+    'array',
+    'list',
+    'ds',
+    'data structure',
+    'bitmask'
+    ),
+    new Array(
+    'list',
+    'linked list',
+    'stack',
+    'queue',
+    'doubly',
+    'deque',
+    'cs1020',
+    'cs2020',
+    'cs2040',
+    'array',
+    'ds',
+    'data structure',
+    'linked'
+    ),
+    new Array(
+    'hashtable',
+    'hash table',
+    'open addressing',
+    'linear',
+    'quadratic',
+    'probing',
+    'cs1020',
+    'cs2020',
+    'cs2040',
+    'ds',
+    'data structure'
+    ),
+    new Array(
+    'heap',
+    'binary heap',
+    'priority queue',
+    'recursive',
+    'cs2010',
+    'cs2020',
+    'cs2040',
+    'recursion',
+    'ds',
+    'data structure',
+    'binary',
+    'heap'
+    ),
+    new Array(
+    'bst',
+    'binary search tree',
+    'adelson velskii landis',
+    'set',
+    'table',
+    'avl',
+    'cs2010',
+    'cs2020',
+    'cs2040',
+    'recursion',
+    'recursive',
+    'ds',
+    'data structure',
+    'set',
+    'bst',
+    'binary',
+    'search',
+    'tree',
+    'priority',
+    'queue'
+    ),
+    new Array(
+    'graphds',
+    'graph structures',
+    'tree',
+    'complete',
+    'bipartite',
+    'dag',
+    'cs2010',
+    'cs2020',
+    'cs2040',
+    'graph',
+    'ds',
+    'data structure'
+    ),
+    new Array(
+    'ufds',
+    'union-find ds',
+    'path compression',
+    'disjoint',
+    'set',
+    'data structure',
+    'union by rank',
+    'cs2010',
+    'cs2020',
+    'cs2040',
+    'cs3233',
+    'array',
+    'tree',
+    'find',
+    'ds'
+    ),
+    new Array(
+    'segmenttree',
+    'segment tree',
+    'dynamic',
+    'range',
+    'sum',
+    'segment',
+    'tree',
+    'ds',
+    'data structure'
+    ),
+    new Array(
+    'fenwicktree',
+    'fenwick tree',
+    'binary indexed tree',
+    'bit',
+    'dynamic',
+    'fenwick',
+    'range',
+    'sum',
+    'point',
+    'update',
+    'binary',
+    'ds',
+    'data structure'
+    ),
+    new Array(
+    'recursion',
+    'recursion tree/dag',
+    'dynamic programming',
+    'dp',
+    'recursive',
+    'algorithm',
+    'recursion',
+    'tree',
+    'dag'
+    ),
+    new Array(
+    'dfsbfs',
+    'graph traversal',
+    'bfs',
+    'dfs',
+    'bipartite',
+    'scc',
+    'cut vertex',
+    'articulation point',
+    'bridge',
+    'graph',
+    'algorithm'
+    ),
+    new Array(
+    'mst',
+    'min spanning tree',
+    'mst',
+    'prim',
+    'kruskal',
+    'graph',
+    'min',
+    'spanning',
+    'tree',
+    'algorithm'
+    ),
+    new Array(
+    'sssp',
+    'ss shortest paths',
+    'sssp',
+    'single-source',
+    'bfs',
+    'dijkstra',
+    'bellman ford',
+    'single source',
+    'shortest path',
+    'graph',
+    'algorithm'
+    ),
+    new Array(
+    'maxflow',
+    'network flow',
+    'max flow',
+    'edmonds karp',
+    'min cut',
+    'dinic',
+    'ford fulkerson',
+    'graph',
+    'algorithm'
+    ),
+    new Array(
+    'matching',
+    'graph matching',
+    'augmenting path',
+    'bipartite',
+    'graph',
+    'matching',
+    'algorithm'
+    ),
+    new Array(
+    'cyclefinding',
+    'cycle finding',
+    'floyd',
+    'tortoise-hare',
+    'math', 'algorithm'
+    ),
+    new Array(
+    'suffixtree',
+    'suffix tree',
+    'string',
+    'matching',
+    'lrs',
+    'lcs',
+    'cs3233',
+    'suffix',
+    'tree',
+    'ds',
+    'data structure'
+    ),
+    new Array(
+    'suffixarray',
+    'suffix array',
+    'lcp',
+    'cs3233',
+    'matching',
+    'lrs',
+    'lcs',
+    'suffix',
+    'array',
+    'string',
+    'ds',
+    'data structure'
+    ),
+    new Array(
+    'polygon',
+    'geometry (polygon)',
+    'convex',
+    'cut',
+    'winding',
+    'concave',
+    'cs3233',
+    'computational',
+    'geometry',
+    'algorithm'
+    ),
+    new Array(
+    'convexhull',
+    'convex hull',
+    'andrew',
+    'monotone chain',
+    'graham',
+    'scan',
+    'jarvis',
+    'march',
+    'cs3233',
+    'computational',
+    'geometry',
+    'algorithm'
+    ),
+    new Array(
+    'mvc',
+    'min vertex cover',
+    'np-hard',
+    'graph',
+    'bipartite',
+    'tree',
+    'tree',
+    'dp',
+    'bipartite',
+    'matching',
+    'max flow',
+    'cs3233',
+    'cs4234'
+    ),
+    new Array(
+    'tsp',
+    'traveling salesman',
+    'np-hard',
+    'graph',
+    'dp',
+    'mst',
+    'cs3233',
+    'cs4234'
+    ),
+    new Array(
+    'steinertree',
+    'steiner tree',
+    'np-hard',
+    'graph',
+    'mst',
+    'cs4234'
+    )
+  );
+
+  // generate tags
+  function createFilters() {
+    var filterList = new Array();
+    for (var i = 0; i < allViz.length; i++) {
+      var thisVizTags = allViz[i];
+      for (var j = 1; j < thisVizTags.length; j++)
+        if ($.inArray(thisVizTags[j], filterList) == -1)
+          filterList.push(thisVizTags[j]);
+    }
+    filterList.sort();
+    for (var i = 0; i < filterList.length; i++)
+      // if (i>0 && filterList[i]!=filterList[i-1]) // avoid duplicates
+      $('#filters').append("<span class='filter'>" + filterList[i] + "</span>");
+  }
+  createFilters();
+
+
+  // tag and search mechanism
+  $('#filters-and-lines').hide();
+  $('#emptySearchMsg').hide();
+  var isEmptySearch = true;
+  var searchTerm = new Array(""); // index 0 is the value from the search bar. Indices 1+ are values from tags.
+
+  // search/unsearch from tag filters
+  $('.filter').click(function() {
+    // add value to search
+    searchTerm[searchTerm.length] = $(this).html();
+    showResults();
+    $('#active-tags').append('<div class="active-tag">' + $(this).html() + '<span>&#x2715;</span></div>');
+    $('.active-tag span').unbind('click').bind('click', function() {
+      // remove value from search
+      var indexToRemove = searchTerm.indexOf($(this).parent().text());
+      searchTerm.splice(indexToRemove, 1);
+      showResults();
+      $(this).parent().remove(); // visual
+    });
+  });            
+
+  // instant search from search bar 
+  $('#search').each(function() {               
+    // Save current value of element
+    $(this).data('oldVal', $(this));                  
+
+    // Look for changes in the value
+    $(this).bind("propertychange keyup input paste", function(event) {
+      // If value has changed...
+      if ($(this).data('oldVal') != $(this).val()) {
+        // Updated stored value
+        $(this).data('oldVal', $(this).val());
+        searchTerm[0] = $(this).val();
+        showResults();
+      }
+    });
+  });
+  $('#searchbar').submit(function() {
+    return false;
+  });
+
+  // find vizs with tag searchTerm
+  function showResults() {    
+    isEmptySearch = true;
+    $('#emptySearchMsg').hide();
+    $('.viz').hide();
+    for (var i = 0; i < allViz.length; i++) { // for each visualisation
+      var thisVizTags = allViz[i]; // array of the tags this visualisation has
+      var foundAll = true;
+      for (var j = 0; j < searchTerm.length; j++) // for each search term
+        foundAll = foundAll && findOneTag(searchTerm[j], thisVizTags);
+        if (foundAll) {
+          $('#'+thisVizTags[0]).show();
+          isEmptySearch = false;
+        }
+    }                 
+    if (isEmptySearch)
+      $('#emptySearchMsg').show();
+  }
+
+  function findOneTag(tag, vizArr) {
+    var found = false;                       
+    for (var i = 0; i < vizArr.length; i++) {
+      var patt = new RegExp(tag, "i");              
+      if (patt.test(vizArr[i]))
+        found = true;
+    }
+    return found;
+  }
+
+  // styling - arrow rotation, show filters-and-lines
+  $("#show-filters").click(function() {
+    if ($("#filters-and-lines").is(":hidden"))
+      showFilters();
+    else
+      hideFilters();             
+  });
+  function showFilters() {       
+    $("#filters-and-lines").slideDown("slow");
+    $("#show-filters").html('&#9653;'); // ^
+  }
+  function hideFilters() {
+    $("#filters-and-lines").slideUp("slow");
+    $("#show-filters").html('&#9663;'); // v
+  }
+
+  // styling - surprise colour stuff
+  $('#search').focus(function() { // search inset box-shadow
+    $(this).css("box-shadow", "0px 0px 3px " + surpriseColour + " inset");
+    $(this).css("color", "black");
+  });
+  $('#search').focusout(function() {  
+    if ($(this).val().trim() == "") {
+      $(this).css("box-shadow", "0px 0px 3px #929292 inset");
+      $(this).css("color", "#888888");
+    }                                        
+  });
+  $('#show-filters').css("background-color", surpriseColour); // search filter button background
+  $('#temp a').css("background-color", surpriseColour); // link to old site button
+  $('.filter').css("background-color", "#aaaaaa"); // filter tags on hover
+  $('.filter').hover(function() {
+    $(this).css("background-color", surpriseColour);
+  }, function() {  
+    $(this).css("background-color", "#aaaaaa");
+  });
+});
+</script>
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>
