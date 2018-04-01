@@ -9,11 +9,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 <meta property="og:image" content="https://visualgo.net/img/png.png">
 <title>Algorithm Simulator</title>
-<link rel="icon" href="https://visualgo.net/img/favicon.png" type="image/x-icon">
-<link rel="shortcut icon" href="https://visualgo.net/img/favicon.png" type="image/x-icon">
+
+
+<link rel="icon" href="https://cdn3.iconfinder.com/data/icons/brain-games/1042/Brain-Games.png" type="image/x-icon">
+<link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/brain-games/1042/Brain-Games.png" type="image/x-icon">
+
+
 <link rel="apple-touch-icon" href="https://visualgo.net/img/favicon.png">
 <link rel="apple-touch-icon" sizes="72x72" href="https://visualgo.net/img/favicon.png">
 <link rel="apple-touch-icon" sizes="114x114" href="https://visualgo.net/img/favicon.png">
+
 <link rel="stylesheet" type="text/css" href="https://visualgo.net/fonts/silkscreen/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="https://visualgo.net/css/common.css">
 <style>
@@ -303,9 +308,9 @@ function changeURL() {
 <a id="home" href="/">Algorithm<span class="colour">Simulator</span><span style="font-size: 50%">.net</span></a>
 
 
-    <a class="right-links" id="Signin-link" href="translation">Signin</a>
-    <a class="right-links" id="Signup-link" href="translation">Signup</a>
-    <a class="right-links" id="tutorial-link" href="training">Tutorial</a>
+    <a class="right-links" id="Signin-link" href="/showSignIn">Signin</a>
+    <a class="right-links" id="Signup-link" href="/showSignUp">Signup</a>
+    <a class="right-links" id="tutorial-link" href="/showTutorial">Tutorial</a>
 
 </div>
 <div id="dark-overlay"></div>
@@ -417,7 +422,7 @@ function changeURL() {
 
 </a>
 <div class='info'>
-<h3><a id='heaptext' href='en/dfs'>DFS/BFS</a></h3>
+<h3><a id='heaptext' href='en/dfs'>Dfs/Bfs</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>preOrder</span>
 <span class='filter'>postOrder</span>
@@ -849,11 +854,9 @@ function changeURL() {
 </ul>
 </div>
 <div id="bottom-bar">
-<a id="trigger-about">About</a>
-<a id="trigger-team">Team</a>
-<a id="trigger-special mention">Special Mentions</a>
-
-
+    <span>About. </span>
+    <span> Credits. </span>
+    <span> Special Mentions.</span>
 </div>
 <div id="about" class="overlays">
 <h4>About</h4><span class='close-overlay'>&#x2715;</span>
@@ -1119,24 +1122,12 @@ $(function() {
     'sorting',
     'array',
     'algorithm',
-    'bubble',
-    'select',
-    'insert',
-    'selection',
-    'insertion',
-    'merge',
-    'quick',
-    'randomized quick',
-    'data structure',
-    'sorting'
+    'bubble'
     ),
     new Array(
     'bitmask',
     'bitmask',
     'bit manipulation',
-    'list',
-    'ds',
-    'data structure',
     'bitmask'
     ),
     new Array(
@@ -1144,17 +1135,13 @@ $(function() {
     'linked list',
     'stack',
     'queue',
-    'doubly',
-    'data structure',
-    'linked'
+    'doubly'
     ),
     new Array(
     'hashtable',
     'hash table',
     'open addressing',
-    'linear',
-    'ds',
-    'data structure'
+    'linear'
     ),
     new Array(
     'heap',
@@ -1169,12 +1156,6 @@ $(function() {
     'binary search tree',
     'adelson velskii landis',
     'set',
-    'ds',
-    'data structure',
-    'set',
-    'bst',
-    'binary',
-    'search',
     'tree',
     'priority',
     'queue'
@@ -1184,19 +1165,13 @@ $(function() {
     'graph structures',
     'tree',
     'complete',
-    'bipartite',
-    'graph',
-    'ds',
-    'data structure'
+    'bipartite'
     ),
     new Array(
     'ufds',
     'union-find ds',
     'path compression',
     'disjoint',
-    'set',
-    'array',
-    'tree',
     'find',
     'ds'
     ),
@@ -1205,10 +1180,6 @@ $(function() {
     'segment tree',
     'dynamic',
     'range',
-    'sum',
-    'segment',
-    'tree',
-    'ds',
     'data structure'
     ),
     new Array(
@@ -1219,11 +1190,6 @@ $(function() {
     'dynamic',
     'fenwick',
     'range',
-    'sum',
-    'point',
-    'update',
-    'binary',
-    'ds',
     'data structure'
     ),
     new Array(
@@ -1231,9 +1197,6 @@ $(function() {
     'recursion tree/dag',
     'dynamic programming',
     'dp',
-    'recursive',
-    'algorithm',
-    'recursion',
     'tree',
     'dag'
     ),
@@ -1243,10 +1206,6 @@ $(function() {
     'bfs',
     'dfs',
     'bipartite',
-    'scc',
-    'cut vertex',
-    'articulation point',
-    'bridge',
     'graph',
     'algorithm'
     ),
@@ -1254,12 +1213,6 @@ $(function() {
     'mst',
     'min spanning tree',
     'mst',
-    'prim',
-    'kruskal',
-    'graph',
-    'min',
-    'spanning',
-    'tree',
     'algorithm'
     ),
     new Array(
@@ -1269,10 +1222,6 @@ $(function() {
     'single-source',
     'bfs',
     'dijkstra',
-    'bellman ford',
-    'single source',
-    'shortest path',
-    'graph',
     'algorithm'
     ),
     new Array(
@@ -1280,19 +1229,12 @@ $(function() {
     'network flow',
     'max flow',
     'edmonds karp',
-    'min cut',
-    'dinic',
-    'ford fulkerson',
-    'graph',
     'algorithm'
     ),
     new Array(
     'matching',
     'graph matching',
     'augmenting path',
-    'bipartite',
-    'graph',
-    'matching',
     'algorithm'
     ),
     new Array(
@@ -1308,21 +1250,12 @@ $(function() {
     'string',
     'matching',
     'lrs',
-    'lcs',
-
-    'suffix',
-    'tree',
-    'ds',
     'data structure'
     ),
     new Array(
     'suffixarray',
     'suffix array',
     'lcp',
-    'lrs',
-    'lcs',
-    'suffix',
-    'array',
     'string',
     'ds',
     'data structure'
@@ -1331,50 +1264,29 @@ $(function() {
     'polygon',
     'geometry (polygon)',
     'convex',
-    'cut',
-    'winding',
-    'concave',
-    'cs3233',
-    'computational',
     'geometry',
     'algorithm'
     ),
-    new Array(
-    'convexhull',
-    'convex hull',
-    'andrew',
-    'monotone chain',
-    'graham',
-    'scan',
-    'jarvis',
 
-    'computational',
-    'geometry',
-    'algorithm'
-    ),
     new Array(
     'mvc',
     'min vertex cover',
     'np-hard',
     'graph',
-    'bipartite',
-    'tree',
-    'tree',
-    'dp',
-    'bipartite',
+    'bipartite'
     ),
     new Array(
     'tsp',
     'traveling salesman',
     'np-hard',
     'graph',
-    'dp',
+    'dp'
     ),
     new Array(
     'steinertree',
     'steiner tree',
     'np-hard',
-    'graph',
+    'graph'
     )
   );
 
@@ -1387,7 +1299,7 @@ $(function() {
         if ($.inArray(thisVizTags[j], filterList) == -1)
           filterList.push(thisVizTags[j]);
     }
-    filterList.sort();
+   // filterList.sort();
     for (var i = 0; i < filterList.length; i++)
       // if (i>0 && filterList[i]!=filterList[i-1]) // avoid duplicates
       $('#filters').append("<span class='filter'>" + filterList[i] + "</span>");
