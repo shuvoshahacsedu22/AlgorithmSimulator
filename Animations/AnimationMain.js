@@ -111,7 +111,7 @@ function animEnded()
     {
         stepBackButton.disabled = false;
     }
-    
+
 
 }
 
@@ -397,7 +397,7 @@ function AnimationManager(objectManager)
     //  block (in frame numbers).
     this.currFrame = 0;
     this.animationBlockLength = 0;
-
+    this.oldAnimationBlockLength = 0;
     //  The animation block that is currently running.  Array of singleAnimations
     this.currentBlock = null;
 
@@ -509,6 +509,15 @@ function AnimationManager(objectManager)
         while (this.currentAnimation < this.AnimationSteps.length && !foundBreak)
         {
             var nextCommand = this.AnimationSteps[this.currentAnimation].split("<;>");
+            if(nextCommand[0].toUpperCase()=="STOPANIMATION"){
+                this.oldAnimationBlockLength=this.animationBlockLength;
+                this.animationBlockLength=0;
+
+            }
+            if(nextCommand[0].toUpperCase()=="RESTOREANIMATION"){
+                this.animationBlockLength=this.oldAnimationBlockLength;
+                console.log(this.oldAnimationBlockLength);
+            }
             if (nextCommand[0].toUpperCase() == "CREATECIRCLE")
             {
                 this.animatedObjects.addCircleObject(parseInt(nextCommand[1]), nextCommand[2]);
