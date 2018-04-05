@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3169c6d5-3a11-4980-92fd-f545d48128b5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AlgorithmSimulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AlgorithmSimulator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="3169c6d5-3a11-4980-92fd-f545d48128b5" name="Default" comment="Added simulations of stack using linked list; Animation main class modified for supporting lines and listed lists">
+      <change afterPath="$PROJECT_DIR$/Algorithms/StackLL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Animations/AnimatedCircle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Animations/AnimatedLinkedList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Animations/Line.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HTMLs/StackLL.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms/Algorithm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms/Algorithm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Animations/AnimatedObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/Animations/AnimatedObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Animations/AnimatedRectangle.js" beforeDir="false" afterPath="$PROJECT_DIR$/Animations/AnimatedRectangle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Animations/AnimationMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Animations/AnimationMain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Animations/ObjectManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/Animations/ObjectManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Animations/UndoFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/Animations/UndoFunctions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.5/sre_compile.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.5/sre_compile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.5/sre_constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.5/sre_constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.5/sre_parse.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.5/sre_parse.py" afterDir="false" />
@@ -35,17 +42,85 @@
       <file leaf-file-name="CustomEvents.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Animations/CustomEvents.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="-972">
               <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Algorithm.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Algorithms/Algorithm.js">
+      <file leaf-file-name="HighlightCircle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Animations/HighlightCircle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="-445" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Line.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Animations/Line.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1071">
+              <caret line="108" column="67" selection-start-line="108" selection-start-column="67" selection-end-line="108" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObjectManager.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Animations/ObjectManager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4675">
+              <caret line="275" selection-start-line="275" selection-end-line="275" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UndoFunctions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Animations/UndoFunctions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StackLL.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HTMLs/StackLL.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-202">
+              <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StackArray.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HTMLs/StackArray.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="37" selection-start-line="37" selection-end-line="37" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimatedObject.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Animations/AnimatedObject.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1139">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimatedRectangle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Animations/AnimatedRectangle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4828" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimationMain.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Animations/AnimationMain.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1394">
+              <caret line="1150" column="31" selection-start-line="1150" selection-start-column="31" selection-end-line="1150" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -62,7 +137,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>SetSpeed</find>
-      <find>ThirdParty</find>
       <find>unescape</find>
       <find>paused</find>
       <find>getClosestCardinalPoint</find>
@@ -70,17 +144,19 @@
       <find>addControls</find>
       <find>animationBlockLength</find>
       <find>AnimationLibrary</find>
-      <find>AlgorithmLibrary</find>
       <find>starting</find>
       <find>startnew</find>
       <find>startNex</find>
       <find>percent</find>
+      <find>AlgorithmLibrary</find>
+      <find>ThirdParty</find>
+      <find>SIZE</find>
     </findStrings>
     <replaceStrings>
       <replace>./Algorithms</replace>
-      <replace>../Jquery</replace>
       <replace>../Animations</replace>
       <replace>../Algorithms</replace>
+      <replace>../Jquery</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -104,6 +180,16 @@
         <option value="$PROJECT_DIR$/Codes/Algorithms/QueueArray.js" />
         <option value="$PROJECT_DIR$/Codes/Css/visualizationPageStyle.css" />
         <option value="$PROJECT_DIR$/Codes/Animations/AnimationMain.js" />
+        <option value="$PROJECT_DIR$/Algorithms/Algorithm.js" />
+        <option value="$PROJECT_DIR$/Animations/AnimationMain.js" />
+        <option value="$PROJECT_DIR$/Animations/AnimatedRectangle.js" />
+        <option value="$PROJECT_DIR$/Animations/AnimatedObject.js" />
+        <option value="$PROJECT_DIR$/Animations/UndoFunctions.js" />
+        <option value="$PROJECT_DIR$/Animations/AnimatedCircle.js" />
+        <option value="$PROJECT_DIR$/Animations/AnimatedLinkedList.js" />
+        <option value="$PROJECT_DIR$/Animations/Line.js" />
+        <option value="$PROJECT_DIR$/Animations/ObjectManager.js" />
+        <option value="$PROJECT_DIR$/HTMLs/StackLL.html" />
       </list>
     </option>
   </component>
@@ -114,12 +200,14 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="468" />
-    <option name="y" value="96" />
-    <option name="width" value="552" />
-    <option name="height" value="721" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -133,6 +221,21 @@
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="AlgorithmSimulator" type="cbb8eebc:String" user="AlgorithmSimulator" />
             </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="AlgorithmSimulator" type="cbb8eebc:String" user="AlgorithmSimulator" />
+              <item name="Algorithms" type="cbb8eebc:String" user="Algorithms" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="AlgorithmSimulator" type="cbb8eebc:String" user="AlgorithmSimulator" />
+              <item name="Animations" type="cbb8eebc:String" user="Animations" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="AlgorithmSimulator" type="cbb8eebc:String" user="AlgorithmSimulator" />
+              <item name="HTMLs" type="cbb8eebc:String" user="HTMLs" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -142,7 +245,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML4 File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../usfca" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
@@ -150,6 +253,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\WebstormProjects\AlgorithmSimulator\Animations" />
+      <recent name="C:\Users\HP\WebstormProjects\AlgorithmSimulator\HTMLs" />
+      <recent name="C:\Users\HP\WebstormProjects\AlgorithmSimulator\Algorithms" />
       <recent name="C:\Users\HP\WebstormProjects\AlgorithmSimulator" />
     </key>
   </component>
@@ -188,23 +294,37 @@
       <workItem from="1522567746975" duration="9033000" />
       <workItem from="1522652422398" duration="22364000" />
       <workItem from="1522826172736" duration="2136000" />
+      <workItem from="1522828653554" duration="2512000" />
+      <workItem from="1522940310565" duration="3079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49748000" />
+    <option name="totallyTimeSpent" value="55339000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24304539" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2470238" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32838285" />
+      <window_info anchor="bottom" id="Messages" visible="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3290938" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290938" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32838285" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -213,7 +333,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3290938" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,26 +341,16 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added simulations of stack using linked list; Animation main class modified for supporting lines and listed lists" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added simulations of stack using linked list; Animation main class modified for supporting lines and listed lists" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Animations/CustomEvents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/HTMLs/StackArray.html" />
-    <entry file="file://$PROJECT_DIR$/Codes/Algorithms/Algorithm.js" />
-    <entry file="file://$PROJECT_DIR$/Codes/Animations/HighlightCircle.js" />
-    <entry file="file://$PROJECT_DIR$/Codes/Animations/CustomEvents.js" />
-    <entry file="file://$PROJECT_DIR$/Codes/Animations/AnimatedRectangle.js" />
-    <entry file="file://$PROJECT_DIR$/Codes/Animations/ObjectManager.js" />
-    <entry file="file://$PROJECT_DIR$/Codes/Css/visualizationPageStyle.css" />
     <entry file="file://$PROJECT_DIR$/Codes/Animations/AnimationMain.js" />
     <entry file="file://$PROJECT_DIR$/Codes/HTMLs/StackArray.html" />
     <entry file="file://$PROJECT_DIR$/Codes/Algorithms/StackArray.js" />
@@ -289,20 +398,105 @@
     <entry file="file://$PROJECT_DIR$/Codes/Algorithms/Algorithm.js" />
     <entry file="file://$PROJECT_DIR$/Codes/Algorithms/StackArray.js" />
     <entry file="file://$PROJECT_DIR$/Codes/HTMLs/StackArray.html" />
+    <entry file="file://$PROJECT_DIR$/Algorithms/Algorithm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Algorithms/StackArray.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-646" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Algorithms/StackLL.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/AnimatedCircle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/AnimatedLabel.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/AnimatedLinkedList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/AnimatedObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/AnimatedRectangle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4828" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/AnimationMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="1150" column="31" selection-start-line="1150" selection-start-column="31" selection-end-line="1150" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Animations/CustomEvents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="-972">
           <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Algorithms/Algorithm.js">
+    <entry file="file://$PROJECT_DIR$/Animations/HighlightCircle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="-445" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/Line.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret line="108" column="67" selection-start-line="108" selection-start-column="67" selection-end-line="108" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/ObjectManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4675">
+          <caret line="275" selection-start-line="275" selection-end-line="275" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/UndoFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HTMLs/StackArray.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="37" selection-start-line="37" selection-end-line="37" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HTMLs/StackLL.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-202">
+          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
         </state>
       </provider>
     </entry>

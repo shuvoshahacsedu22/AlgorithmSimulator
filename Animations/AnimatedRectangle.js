@@ -1,4 +1,3 @@
-
 AnimatedRectangle = function(id, val, wth, hgt,  xJust, yJust, fillColor, edgeColor)
 {
 	this.w = wth;
