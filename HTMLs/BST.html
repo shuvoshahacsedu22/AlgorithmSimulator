@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		
 		<title>
-			Linked List Stack Visualization 
+			Binary Search Tree Visualization
 		</title>
 		
 		<!-- css sheet for how the page is laid out -->
@@ -12,9 +13,10 @@
 			
 		<!-- jqueury stuff.  Only used for the animation speed slider. -->
 		<link rel="stylesheet" href="../Jquery/jquery-ui-1.8.11.custom.css">
+				
 		<script src="../Jquery/jquery-1.5.2.min.js"></script>
 		<script src="../Jquery/jquery-ui-1.8.11.custom.min.js"></script>
-
+				
 		<!-- Javascript for the actual visualization code -->
 		<script type = "application/javascript" src = "../Animations/CustomEvents.js"> </script>
 		<script type = "application/javascript" src = "../Animations/UndoFunctions.js"> </script>
@@ -27,23 +29,21 @@
 		<script type = "application/javascript" src = "../Animations/Line.js"> </script>
 		<script type = "application/javascript" src = "../Animations/ObjectManager.js"> </script>
 		<script type = "application/javascript" src = "../Animations/AnimationMain.js"> </script>
-
 		<script type = "application/javascript" src = "../Algorithms/Algorithm.js"> </script>
-		<script type = "application/javascript" src = "../Algorithms/StackLL.js"> </script> 
+		<script type = "application/javascript" src = "../Algorithms/BST.js"> </script>
 				
 			
 	 </head> 
 	
-	<body  onload="init()" class="VisualizationMainPage">
+	<body onload="init();" class="VisualizationMainPage">
 		
 		<div id = "container">
-
-			<div id="header">
-				<h1 id="headerpart1" >Stack<span id="headerpart2"> (Linked List Implementation) </span> </h1>
-			</div>
-
 			
-			<div  id = "mainContent">
+			<div id="header">  
+				<h1>Binary Search Tree</h1>
+			</div>
+			
+			<div id = "mainContent"> 
 				
 				<div id = "algoControlSection">
 					<!-- Table for buttons to control specific animation (insert/find/etc) -->
@@ -54,7 +54,6 @@
 					<!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
 									
 				<canvas id="canvas" width="1000" height="500"></canvas>
-				
 				<div id = "generalAnimationControlSection">
 					<!-- Table for buttons to control general animation (play/pause/undo/etc) ->
 					<!-- (filled in by javascript code, specifically AnimationMain.js)  -->
@@ -64,7 +63,9 @@
 				
 			</div> <!-- mainContent -->
 			
-
+			<div id="footer">  
+				<p><a href="Algorithms.html">Algorithm Visualizations</a></p>
+			</div>
 
 		</div><!-- container -->
 	</body>
