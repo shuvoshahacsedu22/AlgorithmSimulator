@@ -198,8 +198,6 @@ BTree.prototype.disableUI = function(event)
 
     this.premptiveSplitBox.disabled = true;
 
-
-
 }
 
 
@@ -217,7 +215,7 @@ BTree.prototype.maxDegreeChangedHandler = function(newMaxDegree, event)
 BTree.prototype.insertCallback = function(event)
 {
     var insertedValue;
-    insertedValue = this.normalizeNumber(this.insertField.value, 4);
+    insertedValue = this.insertField.value;
     if (insertedValue != "")
     {
         this.insertField.value = "";
@@ -230,7 +228,7 @@ BTree.prototype.deleteCallback = function(event)
     var deletedValue = this.deleteField.value;
     if (deletedValue != "")
     {
-        deletedValue = this.normalizeNumber(this.deleteField.value, 4);
+        deletedValue = this.deleteField.value;
         this.deleteField.value = "";
         this.implementAction(this.deleteElement.bind(this),deletedValue);
     }
@@ -239,28 +237,6 @@ BTree.prototype.deleteCallback = function(event)
 BTree.prototype.clearCallback = function(event)
 {
     this.implementAction(this.clearTree.bind(this), "");
-}
-
-
-BTree.prototype.premtiveSplitCallback = function(event)
-{
-    if (this.preemptiveSplit != this.premptiveSplitBox.checked)
-    {
-        this.implementAction(this.changePreemtiveSplit.bind(this), this.premptiveSplitBox.checked);
-    }
-}
-
-
-BTree.prototype.changePreemtiveSplit = function(newValue)
-{
-    this.commands = new Array();
-    this.cmd("Step");
-    this.preemptiveSplit = newValue;
-    if (this.premptiveSplitBox.checked != this.preemptiveSplit)
-    {
-        this.premptiveSplitBox.checked = this.preemptiveSplit;
-    }
-    return this.commands;
 }
 
 
@@ -406,7 +382,7 @@ BTree.prototype.changeDegree = function(degree)
 BTree.prototype.findCallback = function(event)
 {
     var findValue;
-    findValue = this.normalizeNumber(this.findField.value, 4);
+    findValue = this.findField.value;
     this.findField.value = "";
     this.implementAction(this.findElement.bind(this),findValue);
 }
@@ -463,7 +439,7 @@ BTree.prototype.findInTree = function(tree, val)
         }
         else
         {
-            this.cmd("SetTextColor", tree.graphicID, "#FF0000", i);
+            this.cmd("SetTextColor", tree.graphicID, "#23ff19", i);
             this.cmd("SetText", this.messageID, "Element " + val + " found");
             this.cmd("Step");
             this.cmd("SetTextColor", tree.graphicID, FOREGROUND_COLOR, i);

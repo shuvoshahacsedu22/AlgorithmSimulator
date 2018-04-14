@@ -141,7 +141,7 @@ AnimatedBTreeNode.prototype.draw = function(context)
 	for (var i = 0; i < this.numLabels; i++)
 	{
 		var labelx  = this.x - this.widthPerElement * this.numLabels / 2 + this.widthPerElement / 2 + i * this.widthPerElement; 
-		var labely = this.y			   
+		var labely = this.y;
 
 		context.fillStyle = this.labelColors[i];
 		context.fillText(this.labels[i], labelx, labely); 
