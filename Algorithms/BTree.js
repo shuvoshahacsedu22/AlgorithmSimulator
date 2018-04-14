@@ -215,7 +215,7 @@ BTree.prototype.maxDegreeChangedHandler = function(newMaxDegree, event)
 BTree.prototype.insertCallback = function(event)
 {
     var insertedValue;
-    insertedValue = this.insertField.value;
+    insertedValue = parseInt(this.insertField.value);
     if (insertedValue != "")
     {
         this.insertField.value = "";
@@ -225,7 +225,7 @@ BTree.prototype.insertCallback = function(event)
 
 BTree.prototype.deleteCallback = function(event)
 {
-    var deletedValue = this.deleteField.value;
+    var deletedValue = parseInt(this.deleteField.value);
     if (deletedValue != "")
     {
         deletedValue = this.deleteField.value;
@@ -382,7 +382,7 @@ BTree.prototype.changeDegree = function(degree)
 BTree.prototype.findCallback = function(event)
 {
     var findValue;
-    findValue = this.findField.value;
+    findValue =parseInt(this.findField.value);
     this.findField.value = "";
     this.implementAction(this.findElement.bind(this),findValue);
 }
