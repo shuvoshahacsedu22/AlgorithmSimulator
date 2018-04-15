@@ -1,4 +1,31 @@
-﻿function AnimatedBTreeNode(id, widthPerElem, h, numElems,  fillColor, edgeColor)
+﻿// Copyright 2011 David Galles, University of San Francisco. All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without modification, are
+// permitted provided that the following conditions are met:
+//
+// 1. Redistributions of source code must retain the above copyright notice, this list of
+// conditions and the following disclaimer.
+//
+// 2. Redistributions in binary form must reproduce the above copyright notice, this list
+// of conditions and the following disclaimer in the documentation and/or other materials
+// provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ``AS IS'' AND ANY EXPRESS OR IMPLIED
+// WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+// FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> OR
+// CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+// ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+// NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+// ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// The views and conclusions contained in the software and documentation are those of the
+// authors and should not be interpreted as representing official policies, either expressed
+// or implied, of the University of San Francisco
+
+
+function AnimatedBTreeNode(id, widthPerElem, h, numElems,  fillColor, edgeColor)
 {
 	fillColor = (fillColor == undefined)? "#FFFFFF" : fillColor;
 	edgeColor = (edgeColor == undefined)? "#000000" : edgeColor;
@@ -103,6 +130,10 @@ AnimatedBTreeNode.prototype.draw = function(context)
 	var startY;
 	
 	startX = this.left();
+	if (startX == NaN)
+	{
+		startX  = 0;
+	}
 	startY = this.top();
 	
 	if (this.highlighted)
@@ -141,7 +172,7 @@ AnimatedBTreeNode.prototype.draw = function(context)
 	for (var i = 0; i < this.numLabels; i++)
 	{
 		var labelx  = this.x - this.widthPerElement * this.numLabels / 2 + this.widthPerElement / 2 + i * this.widthPerElement; 
-		var labely = this.y;
+		var labely = this.y			   
 
 		context.fillStyle = this.labelColors[i];
 		context.fillText(this.labels[i], labelx, labely); 
@@ -167,6 +198,7 @@ AnimatedBTreeNode.prototype.setForegroundColor = function(newColor)
 }
 
 
+// TODO:  Kill the magic numbers here
 AnimatedBTreeNode.prototype.getTailPointerAttachPos = function(fromX, fromY, anchor)
 {
 	if (anchor == 0)
@@ -272,3 +304,6 @@ UndoDeleteBTreeNode.prototype.undoInitialStep = function(world)
 	world.setHighlight(this.objectID, this.highlighted);
 	world.setLayer(this.objectID, this.layer);
 }
+
+
+

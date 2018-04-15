@@ -16,10 +16,18 @@ def showSignIn():
     return render_template('singin.html')
 
 @app.route('/showTutorial')
-def tutorial():
+def showTutorial():
     return render_template('tutorial.html')
-if __name__ == '__main__':
-        app.run(port=5002,debug=True)
-@Qapp.route('/backHome')
+
+@app.route('/backHome')
 def return_home():
     return render_template('mainPage.html')
+
+
+@app.route('/showStackLL')
+def show_stack():
+    return render_template('StackLL.html')
+
+if __name__ == '__main__':
+        app.run(port=5002,debug=True)
+
