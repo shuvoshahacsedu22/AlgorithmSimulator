@@ -7,7 +7,7 @@ var MIN_MAX_DEGREE = 3;
 var MAX_MAX_DEGREE = 7;
 
 var HEIGHT_DELTA  = 50;
-var NODE_SPACING = 3;
+var NODE_SPACING = 25;
 var STARTING_Y = 30;
 var WIDTH_PER_ELEM = 40;
 var NODE_HEIGHT = 20;
@@ -50,7 +50,6 @@ BTree.prototype.init = function(am, w, h)
     this.maxKeys = 2;
     this.minKeys = 1;
     this.splitIndex = 1;
-
     this.maxDegree = 3;
 
 
