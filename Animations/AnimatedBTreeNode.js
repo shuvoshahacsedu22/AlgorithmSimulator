@@ -34,7 +34,8 @@ AnimatedBTreeNode.prototype.init = function(id, widthPerElem, h, numElems,  fill
 		this.labelColors[i] = this.foregroundColor;
 	}
 }
-	
+
+
 AnimatedBTreeNode.prototype.getNumElements = function()
 {
 	return this.numLabels;
