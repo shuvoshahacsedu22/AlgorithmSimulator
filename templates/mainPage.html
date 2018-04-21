@@ -15,12 +15,9 @@
 <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/brain-games/1042/Brain-Games.png" type="image/x-icon">
 
 
-<link rel="apple-touch-icon" href="https://visualgo.net/img/favicon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="https://visualgo.net/img/favicon.png">
-<link rel="apple-touch-icon" sizes="114x114" href="https://visualgo.net/img/favicon.png">
 
-<link rel="stylesheet" type="text/css" href="https://visualgo.net/fonts/silkscreen/stylesheet.css">
-<link rel="stylesheet" type="text/css" href="https://visualgo.net/css/common.css">
+<link rel="stylesheet" type="text/css" href="../static/Css/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="../static/Css/common.css">
 <style>
 
 h1 {
@@ -178,7 +175,7 @@ h2 {
 @media (min-width: 320px) { /* 320-480px */
   #topleft {
     top: 20px;
-    width: 100%-; /* the - is to take into account the potential vertical scroll bar? */
+    width: 100%;
     position: relative;
   }
 }
@@ -219,20 +216,6 @@ h2 {
   backface-visibility: hidden;
 }
 
-/*.container {
-  position: relative;
-  width: 50%;
-}
-*/
-/*.image {
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: .5s ease;
-  backface-visibility: hidden;
-}
-*/
 .middle {
   transition: .5s ease;
   opacity: 0;
@@ -334,18 +317,17 @@ function changeURL() {
 </div>
 <div id="main">
 <ul class="list">
-<li class='viz' id='sorting'>
+<li class='viz' id='queue'>
 <div class='li-wrapper' style="background-color: lightblue;">
-    <a class='thumbnail' href='en/sorting' data-anim='sorting'>
-<div class='static' style="background-image: url('img/png/sorting.png');"></div>
-</a>
+    <a class='thumbnail' href='showQueueLL' data-anim='sorting'>
+ </a>
  <div class='info'>
-<h3><a id='sortingtext' href='en/sorting'>Sorting</a></h3>
+<h3><a id='queue' href='showQueueLL'>Queue</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>array</span>
-<span class='filter'>algorithm</span>
-<span class='filter'>bubble</span>
-<span class='filter'>select</span>
+<span class='filter'>enqueue</span>
+<span class='filter'>dequeue</span>
+<span class='filter'>top</span>
 </div>
 </div>
 </div>
@@ -355,32 +337,30 @@ function changeURL() {
 </li>
 <li class='viz' id='stack'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='/showStackLL' data-anim='stack'>
-<div class='static' style="background-image: url('img/png/bitmask.png');"></div>
-
+    <a class='thumbnail' href='showStackLL' data-anim='stack'></a>
+ 
 <div class='info'>
-<h3><a id='stacktext' href='/showStackLL'>Stack</a></h3>
+<h3><a id='stack' href='showStackLL'>Stack</a></h3>
 <div class='indv-viz-filters'>
-<span class='filter' href='/showStackLL'>stack array</span>
-<span class='filter' href='/showStackLL'>stack linked list</span>
-<span class='filter' href='/showStackLL'>array</span>
-<span class='filter' href='/showStackLL'>list</span>
-<span class='filter' href='/showStackLL'>ds</span>
-<span class='filter' href='/showStackLL'>data structure</span>
-<span class='filter' href='/showStackLL'>stack</span>
+<span class='filter'>stack array</span>
+<span class='filter'>stack linked list</span>
+<span class='filter'>array</span>
+<span class='filter'>list</span>
+<span class='filter'>ds</span>
+<span class='filter'>data structure</span>
+<span class='filter'>stack</span>
 </div>
 </div>
 </div>
 </li>
-<li class='viz' id='list'>
+<li class='viz' id='stackArray'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/list' data-anim='list'>
+<a class='thumbnail' href='list' data-anim='list'>
 
-<div class='static' style="background-image: url('img/png/list.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='listtext' href='en/list'>Linked List</a></h3>
+<h3><a id='stackArray' href='showStackArray'>Stack Array</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>stack</span>
 <span class='filter'>queue</span>
@@ -393,19 +373,18 @@ function changeURL() {
 
 
 </li>
-<li class='viz' id='hashtable'>
+<li class='viz' id='BinarySearchTree'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/hashtable' data-anim='hashtable'>
+<a class='thumbnail' href='showBST' data-anim='hashtable'>
 
-<div class='static' style="background-image: url('img/png/hashtable.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='hashtabletext' href='en/hashtable'>Hash Table</a></h3>
+<h3><a id='BST' href='showBST'>BST</a></h3>
 <div class='indv-viz-filters'>
-<span class='filter'>open addressing</span>
-<span class='filter'>linear</span>
-<span class='filter'>quadratic</span>
+<span class='filter'>search</span>
+<span class='filter'>insert</span>
+<span class='filter'>delete</span>
 <span class='filter'>probing</span>
 <span class='filter'>ds</span>
 <span class='filter'>data structure</span>
@@ -415,64 +394,38 @@ function changeURL() {
 
 
 </li>
-<li class='viz' id='heap'>
+<li class='viz' id='Trie'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/dfs_bfs' data-anim='dfs_bfs'>
-<div class='static' style="background-image: url('img/png/heap.png');"></div>
-
+<a class='thumbnail' href='dfs_bfs' data-anim='dfs_bfs'>
+ 
 </a>
 <div class='info'>
-<h3><a id='heaptext' href='en/dfs'>Dfs/Bfs</a></h3>
+<h3><a id='Trie' href='showTrie'>Trie</a></h3>
 <div class='indv-viz-filters'>
-<span class='filter'>preOrder</span>
-<span class='filter'>postOrder</span>
-<span class='filter'>inOrder</span>
+<span class='filter'>insert</span>
+<span class='filter'>delete</span>
+<span class='filter'>show</span>
 <span class='filter'>ds</span>
 <span class='filter'>data structure</span>
-<span class='filter'>binary</span>
-<span class='filter'>heap</span>
+<span class='filter'> </span>
+<span class='filter'> </span>
 </div>
 </div>
 </div>
 
 
 </li>
-<li class='viz' id='bst'>
-<div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/bst' data-anim='bst'>
-<div class='static' style="background-image: url('img/png/bst.png');"></div>
 
+<li class='viz' id='bfs'>
+<div class='li-wrapper' style="background-color: lightblue;">
+<a class='thumbnail' href='showBFS' data-anim='graphds'>
+ 
 </a>
 <div class='info'>
-<h3><a id='bsttext' href='en/bst'>Binary Search Tree</a></h3>
+<h3><a id='BFS' href='showBFS'>BFS</a></h3>
 <div class='indv-viz-filters'>
-<span class='filter'>adelson velskii landis</span>
-<span class='filter'>set</span>
-<span class='filter'>table</span>
-<span class='filter'>avl</span>
-<span class='filter'>recursion</span>
-<span class='filter'>search</span>
-<span class='filter'>tree</span>
-<span class='filter'>priority</span>
-<span class='filter'>queue</span>
-</div>
-</div>
-</div>
-
-
-
-</li>
-<li class='viz' id='graphds'>
-<div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/graphds' data-anim='graphds'>
-<div class='static' style="background-image: url('img/png/graphds.png');"></div>
-
-</a>
-<div class='info'>
-<h3><a id='graphdstext' href='en/graphds'>Graph Structures</a></h3>
-<div class='indv-viz-filters'>
-<span class='filter'>tree</span>
-<span class='filter'>complete</span>
+<span class='filter'>traverse</span>
+<span class='filter'>insert</span>
 <span class='filter'>bipartite</span>
 <span class='filter'>dag</span>
 <span class='filter'>graph</span>
@@ -485,24 +438,19 @@ function changeURL() {
 
 
 </li>
-<li class='viz' id='ufds'>
+<li class='viz' id='BPlusTree'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/ufds' data-anim='ufds'>
-<div class='static' style="background-image: url('img/png/ufds.png');"></div>
+<a class='thumbnail' href='showBTree' data-anim='ufds'>
 
 </a>
 <div class='info'>
-<h3><a id='ufdstext' href='en/ufds'>Union-Find DS</a></h3>
+<h3><a id='BPlusTree' href='showBTree'>BPlusTree</a></h3>
 <div class='indv-viz-filters'>
-<span class='filter'>path compression</span>
-<span class='filter'>disjoint</span>
-<span class='filter'>set</span>
-<span class='filter'>data structure</span>
-<span class='filter'>union by rank</span>
-<span class='filter'>array</span>
 <span class='filter'>tree</span>
-<span class='filter'>find</span>
-<span class='filter'>ds</span>
+<span class='filter'>insert</span>
+<span class='filter'>delete</span>
+<span class='filter'>data structure</span>
+<span class='filter'>visual</span>
 </div>
 </div>
 </div>
@@ -510,49 +458,39 @@ function changeURL() {
 
 
 
-    <li class='viz' id='segmenttree'>
+    <li class='viz' id='bucketSort'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/segmenttree' data-anim='segmenttree'>
-<div class='static' style="background-image: url('img/png/segmenttree.png');"></div>
+<a class='thumbnail' href='showBucketSort' data-anim='bucketSort'>
 
 </a>
 <div class='info'>
-<h3><a id='segmenttreetext' href='en/segmenttree'>Segment Tree</a></h3>
+<h3><a id='bucketSort' href='showBucketSort'>Bucket Sort</a></h3>
 <div class='indv-viz-filters'>
-<span class='filter'>dynamic</span>
-<span class='filter'>range</span>
-<span class='filter'>sum</span>
-<span class='filter'>min</span>
+<span class='filter'>sorting</span>
+<span class='filter'>elements</span>
+<span class='filter'>number</span>
+<span class='filter'>radix</span>
 <span class='filter'>max</span>
-<span class='filter'>segment</span>
-<span class='filter'>tree</span>
-<span class='filter'>ds</span>
-<span class='filter'>data structure</span>
+<span class='filter'>min</span>
 </div>
 </div>
 </div>
 
 
     </li>
-<li class='viz' id='fenwicktree'>
+<li class='viz' id='hasing'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/fenwicktree' data-anim='fenwicktree'>
-<div class='static' style="background-image: url('img/png/fenwicktree.png');"></div>
-
+<a class='thumbnail' href='showOpenHashing' data-anim='adf'>
 </a>
+
+
 <div class='info'>
-<h3><a id='fenwicktreetext' href='en/fenwicktree'>Fenwick Tree</a></h3>
+<h3><a id='hashing' href='showOpenHashing'>Open Hashing</a></h3>
 <div class='indv-viz-filters'>
-<span class='filter'>binary indexed tree</span>
- <span class='filter'>bit</span>
-<span class='filter'>dynamic</span>
-<span class='filter'>fenwick</span>
-<span class='filter'>range</span>
-<span class='filter'>sum</span>
-<span class='filter'>point</span>
-<span class='filter'>update</span>
-<span class='filter'>binary</span>
-<span class='filter'>ds</span>
+<span class='filter'>interger hashing</span>
+ <span class='filter'>string hashing</span>
+<span class='filter'>hash code</span>
+<span class='filter'>modulus</span>
 <span class='filter'>data structure</span>
 </div>
 </div>
@@ -560,12 +498,11 @@ function changeURL() {
 </li>
 <li class='viz' id='recursion'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/recursion' data-anim='recursion'>
-<div class='static' style="background-image: url('img/png/recursion.png');"></div>
+<a class='thumbnail' href='recursion' data-anim='recursion'>
 
 </a>
 <div class='info'>
-<h3><a id='recursiontext' href='en/recursion'>Recursion Tree/DAG</a></h3>
+<h3><a id='recursiontext' href='recursion'>Recursion Tree/DAG</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>dynamic programming</span>
 <span class='filter'>dp</span>
@@ -581,13 +518,12 @@ function changeURL() {
 </li>
 <li class='viz' id='dfsbfs'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/dfsbfs' data-anim='dfsbfs'>
+<a class='thumbnail' href='dfsbfs' data-anim='dfsbfs'>
 
-<div class='static' style="background-image: url('img/png/dfsbfs.png');"></div>
 
 </a>
 <div class='info'>
-<h3><a id='dfsbfstext' href='en/dfsbfs'>Graph Traversal</a></h3>
+<h3><a id='dfsbfstext' href='dfsbfs'>Graph Traversal</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>bfs</span>
 <span class='filter'>dfs</span>
@@ -604,13 +540,12 @@ function changeURL() {
 </li>
 <li class='viz' id='mst'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/mst' data-anim='mst'>
+<a class='thumbnail' href='mst' data-anim='mst'>
 
-<div class='static' style="background-image: url('img/png/mst.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='msttext' href='en/mst'>Min Spanning Tree</a></h3>
+<h3><a id='msttext' href='mst'>Min Spanning Tree</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>mst</span>
 <span class='filter'>prim</span>
@@ -626,13 +561,12 @@ function changeURL() {
 </li>
 <li class='viz' id='sssp'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/sssp' data-anim='sssp'>
+<a class='thumbnail' href='sssp' data-anim='sssp'>
 
-<div class='static' style="background-image: url('img/png/sssp.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='sssptext' href='en/sssp'>SS Shortest Paths</a></h3>
+<h3><a id='sssptext' href='sssp'>SS Shortest Paths</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>sssp</span>
 <span class='filter'>single-source</span>
@@ -649,13 +583,12 @@ function changeURL() {
 </li>
 <li class='viz' id='maxflow'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/maxflow' data-anim='maxflow'>
+<a class='thumbnail' href='maxflow' data-anim='maxflow'>
 
-<div class='static' style="background-image: url('img/png/maxflow.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='maxflowtext' href='en/maxflow'>Network Flow</a></h3>
+<h3><a id='maxflowtext' href='maxflow'>Network Flow</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>max flow</span>
 <span class='filter'>edmonds karp</span>
@@ -670,13 +603,12 @@ function changeURL() {
 </li>
 <li class='viz' id='matching'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/matching' data-anim='matching'>
+<a class='thumbnail' href='matching' data-anim='matching'>
 
-<div class='static' style="background-image: url('img/png/matching.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='matchingtext' href='en/matching'>Graph Matching</a></h3>
+<h3><a id='matchingtext' href='matching'>Graph Matching</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>augmenting path</span>
 <span class='filter'>bipartite</span>
@@ -689,13 +621,12 @@ function changeURL() {
 </li>
 <li class='viz' id='cyclefinding'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/cyclefinding' data-anim='cyclefinding'>
+<a class='thumbnail' href='cyclefinding' data-anim='cyclefinding'>
 
-<div class='static' style="background-image: url('img/png/cyclefinding.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='cyclefindingtext' href='en/cyclefinding'>Cycle Finding</a></h3>
+<h3><a id='cyclefindingtext' href='cyclefinding'>Cycle Finding</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>floyd</span>
 <span class='filter'>tortoise-hare</span>
@@ -707,13 +638,12 @@ function changeURL() {
 </li>
 <li class='viz' id='suffixtree'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/suffixtree' data-anim='suffixtree'>
+<a class='thumbnail' href='suffixtree' data-anim='suffixtree'>
 
-<div class='static' style="background-image: url('img/png/suffixtree.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='suffixtreetext' href='en/suffixtree'>Suffix Tree</a></h3>
+<h3><a id='suffixtreetext' href='suffixtree'>Suffix Tree</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>string</span>
 <span class='filter'>matching</span>
@@ -729,13 +659,12 @@ function changeURL() {
 </li>
 <li class='viz' id='suffixarray'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/suffixarray' data-anim='suffixarray'>
+<a class='thumbnail' href='suffixarray' data-anim='suffixarray'>
 
-<div class='static' style="background-image: url('img/png/suffixarray.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='suffixarraytext' href='en/suffixarray'>Suffix Array</a></h3>
+<h3><a id='suffixarraytext' href='suffixarray'>Suffix Array</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>lcp</span>
 <span class='filter'>matching</span>
@@ -752,13 +681,12 @@ function changeURL() {
 </li>
 <li class='viz' id='polygon'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/polygon' data-anim='polygon'>
+<a class='thumbnail' href='polygon' data-anim='polygon'>
 
-<div class='static' style="background-image: url('img/png/polygon.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='polygontext' href='en/polygon'>Geometry (Polygon)</a></h3>
+<h3><a id='polygontext' href='polygon'>Geometry (Polygon)</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>convex</span>
 <span class='filter'>cut</span>
@@ -773,13 +701,12 @@ function changeURL() {
 </li>
 <li class='viz' id='convexhull'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/convexhull' data-anim='convexhull'>
+<a class='thumbnail' href='convexhull' data-anim='convexhull'>
 
-<div class='static' style="background-image: url('img/png/convexhull.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='convexhulltext' href='en/convexhull'>Convex Hull</a></h3>
+<h3><a id='convexhulltext' href='convexhull'>Convex Hull</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>andrew</span>
 <span class='filter'>monotone chain</span>
@@ -796,13 +723,12 @@ function changeURL() {
 </li>
 <li class='viz' id='mvc'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/mvc' data-anim='mvc'>
+<a class='thumbnail' href='mvc' data-anim='mvc'>
 
-<div class='static' style="background-image: url('img/png/mvc.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='mvctext' href='en/mvc'>Min Vertex Cover</a></h3>
+<h3><a id='mvctext' href='mvc'>Min Vertex Cover</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>np-hard</span>
 <span class='filter'>graph</span>
@@ -819,13 +745,12 @@ function changeURL() {
 </li>
 <li class='viz' id='tsp'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/tsp' data-anim='tsp'>
+<a class='thumbnail' href='tsp' data-anim='tsp'>
 
-<div class='static' style="background-image: url('img/png/tsp.png');"></div>
-
+ 
 </a>
 <div class='info'>
-<h3><a id='tsptext' href='en/tsp'>Traveling Salesman</a></h3>
+<h3><a id='tsptext' href='tsp'>Traveling Salesman</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>np-hard</span>
 <span class='filter'>graph</span>
@@ -837,12 +762,11 @@ function changeURL() {
 </li>
 <li class='viz' id='steinertree'>
 <div class='li-wrapper' style="background-color: lightblue;">
-<a class='thumbnail' href='en/steinertree' data-anim='steinertree'>
-<div class='static' style="background-image: url('img/png/steinertree.png');"></div>
-
+<a class='thumbnail' href='steinertree' data-anim='steinertree'>
+ 
 </a>
 <div class='info'>
-<h3><a id='steinertreetext' href='en/steinertree'>Steiner Tree</a></h3>
+<h3><a id='steinertreetext' href='steinertree'>Steiner Tree</a></h3>
 <div class='indv-viz-filters'>
 <span class='filter'>np-hard</span>
 <span class='filter'>graph</span>
@@ -1414,8 +1338,6 @@ $(function() {
   });
 });
 </script>
-
-
 </body>
 </html>
 </title>
