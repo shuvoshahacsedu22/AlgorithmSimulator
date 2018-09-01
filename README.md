@@ -18,8 +18,13 @@ Running from Terminal on Linux
 ==============================
 Steps:copy paste the following sequencially
 -----
-sudo apt install pip
-pip install flask
-git clone https://github.com/shuvoshahacsedu22/AlgorithmSimulator.git
-cd AlgorithmSimulator
-python AlgorithmSimulator.py
+sudo apt install pip                
+
+pip install flask            
+
+git clone https://github.com/shuvoshahacsedu22/AlgorithmSimulator.git            
+
+cd AlgorithmSimulator        
+
+python AlgorithmSimulator.py                 
+
