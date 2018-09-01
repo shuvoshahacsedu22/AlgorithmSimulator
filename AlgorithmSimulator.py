@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return render_template('mainPage.html')
+    return render_template('algorithmSimulator.html')
 
 @app.route('/showSignUp')
 def showSignUp():
