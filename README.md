@@ -15,14 +15,11 @@ Extract the archive and open as project in pycharm
 Run the app
 
 Running from Terminal on Linux
-Steps:
-1.pip package manager installation
+==============================
+Steps:copy paste the following sequencially
+-----
 sudo apt install pip
-
-2.flask module installation
 pip install flask
-
-3.cloning the repo and running the app
-git clone https://github.com/shuvoshahacsedu22/AlgorithmSimulator.git 
+git clone https://github.com/shuvoshahacsedu22/AlgorithmSimulator.git
 cd AlgorithmSimulator
-python AlgorithmSimulator.py  
+python AlgorithmSimulator.py
